@@ -2,6 +2,9 @@
 import { check } from 'astro:schema';
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import '../styles/global.css'
+import Footer from '../components/Footer.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -46,9 +49,7 @@ const textCase = "upercase";
     </style>
   </head>
   <body>
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <a href="/blog/">Blog</a>
+	<Header />
     <h1>{pageTitle}</h1>
 
     <h2>... and my new Astro site!</h2>
@@ -73,5 +74,9 @@ const textCase = "upercase";
     {happy && <p>I am happy to be learning Astro!</p>}
     {finished && <p>I finished this tutorial!</p>}
     {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+    <Footer />
+    <script>
+        import "../scripts/menu.js";
+      </script>
   </body>
 </html>
