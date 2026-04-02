@@ -1,10 +1,5 @@
 ---
-import { check } from 'astro:schema';
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import '../styles/global.css'
-import Footer from '../components/Footer.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -29,28 +24,7 @@ const fontWeight = "bold";
 const textCase = "upercase";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} >
-    <title>{pageTitle}</title>
-    <style define:vars={{skillColor, fontWeight, textCase}}>
-        h1 {
-            color: purple;
-            font-size: 4rem;
-        }
-        .skill {
-            color: var(--skillColor);
-            font-weight: var(--fontWeight);
-            text-transform: var(--textCase);
-        }
-    </style>
-  </head>
-  <body>
-	<Header />
-    <h1>{pageTitle}</h1>
+<BaseLayout pageTitle={pageTitle}>
 
     <h2>... and my new Astro site!</h2>
   
@@ -74,9 +48,12 @@ const textCase = "upercase";
     {happy && <p>I am happy to be learning Astro!</p>}
     {finished && <p>I finished this tutorial!</p>}
     {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
-    <Footer />
-    <script>
-        import "../scripts/menu.js";
-      </script>
-  </body>
-</html>
+    <style define:vars={{skillColor, fontWeight, textCase}}>
+     .skill {
+        color: var(--skillColor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
+    }
+  </style>
+
+</BaseLayout>
